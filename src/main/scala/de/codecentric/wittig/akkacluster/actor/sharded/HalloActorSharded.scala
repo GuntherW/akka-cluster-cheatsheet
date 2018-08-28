@@ -1,4 +1,4 @@
-package de.codecentric.wittig.akkacluster.actor
+package de.codecentric.wittig.akkacluster.actor.sharded
 
 import akka.actor.{Actor, ActorLogging, Props}
 import akka.cluster.sharding.ShardRegion
@@ -20,12 +20,11 @@ object HalloActorSharded {
   def props: Props = Props(new HalloActorSharded)
 
   val shardName = "halloShard"
+  val numberOfShards = 3
 
   val extractEntityId: ShardRegion.ExtractEntityId = {
     case halloId: HalloSharded => (halloId.name, halloId.hallo)
   }
-
-  val numberOfShards = 3
 
   val extractShardId: ShardRegion.ExtractShardId = {
     case HalloSharded(name, hallo)   => (name.hashCode % numberOfShards).abs.toString

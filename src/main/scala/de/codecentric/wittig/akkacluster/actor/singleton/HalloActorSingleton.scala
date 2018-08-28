@@ -1,17 +1,18 @@
-package de.codecentric.wittig.akkacluster.actor
+package de.codecentric.wittig.akkacluster.actor.singleton
 
 import java.util.concurrent.TimeUnit
 
-import akka.actor.{Actor, ActorLogging, ActorSystem, PoisonPill, Props}
+import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, PoisonPill, Props}
 import akka.cluster.singleton._
 import akka.util.Timeout
 import de.codecentric.wittig.akkacluster.messages.Hallo
 
-import scala.concurrent.ExecutionContext
 import scala.concurrent.duration.FiniteDuration
+import scala.concurrent.{ExecutionContext, Future}
 import scala.util.control.NonFatal
 
 class HalloActorSingleton(name: String) extends Actor with ActorLogging {
+
   override def receive: Receive = state(0)
 
   def state(i: Int): Receive = {
@@ -25,10 +26,10 @@ class HalloActorSingleton(name: String) extends Actor with ActorLogging {
 object HalloActorSingleton {
   def props(name: String) = Props(new HalloActorSingleton(name))
   private def nameProxy(name: String) = name + "Proxy"
+  private implicit val timeout: Timeout = Timeout(FiniteDuration(1, TimeUnit.SECONDS))
 
-  def getOrCreate(system: ActorSystem, name: String)(implicit ex: ExecutionContext) = {
+  def getOrCreate(system: ActorSystem, name: String)(implicit ex: ExecutionContext): Future[ActorRef] = {
 
-    implicit val timeout = Timeout(FiniteDuration(1, TimeUnit.SECONDS))
     system
       .actorSelection("/user/" + nameProxy(name))
       .resolveOne()

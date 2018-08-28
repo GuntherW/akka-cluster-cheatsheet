@@ -1,4 +1,4 @@
-package de.codecentric.wittig.akkacluster.actor
+package de.codecentric.wittig.akkacluster.actor.normal
 
 import akka.actor.{Actor, ActorLogging, Props}
 import de.codecentric.wittig.akkacluster.messages.Hallo

@@ -1,4 +1,4 @@
-package de.codecentric.wittig.akkacluster.crdt
+package de.codecentric.wittig.akkacluster.actor.crdt
 
 import java.util.concurrent.ThreadLocalRandom
 
@@ -11,7 +11,7 @@ class CrdtSet extends Actor with ActorLogging {
   import CrdtSet._
 
   private val replicator = DistributedData(context.system).replicator
-  private implicit val node = Cluster(context.system)
+  private implicit val node: Cluster = Cluster(context.system)
 
   private var addRemove = true
 

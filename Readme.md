@@ -1,4 +1,4 @@
-#  Akka-Cluster-Sample
+#  Akka-Cluster-CheatSheet
 
 Sammelecke für Minimalbeispiele für Akka-Cluster-Zeug
 
