@@ -26,15 +26,17 @@ object Main extends App {
 
 //  einfach()
 //  singleton()
-//  sharded()
-
-  crdt()
+  sharded()
+//  crdt()
 
   def einfach() = {
+    println("--- start --- einfach ---")
+
     (1 to 5).foreach { i =>
-      val hallo = system.actorOf(HalloActor.props(s"${i}Heiner"))
-      system.scheduler.scheduleOnce(1 seconds, hallo, hallo)
+      val halloActor = system.actorOf(HalloActor.props(s"${i}Heiner"))
+      system.scheduler.scheduleOnce(i seconds, halloActor, hallo)
     }
+
   }
 
   def singleton() = {

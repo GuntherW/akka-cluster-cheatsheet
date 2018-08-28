@@ -1,10 +1,10 @@
 version: '2'
 services:
   seed:
-    image: "guntherw/akkaclustersample:1.0"
-    hostname: "akkaseed"
-    command: "-Dakka.remote.netty.tcp.hostname=akkaseed"
+    image: "guntherw/akka-cluster-cheatsheet:1.0"
+    hostname: "seednode"
+    command: "-Dakka.remote.netty.tcp.hostname=seednode"
 
   node:
-    image: "guntherw/akkaclustersample:1.0"
-    links: ["seed:akkaseed"]
+    image: "guntherw/akka-cluster-cheatsheet:1.0"
+    links: ["seed:seednode"]

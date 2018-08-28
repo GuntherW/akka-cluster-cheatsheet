@@ -7,10 +7,9 @@ class HalloActor(name: String) extends Actor with ActorLogging {
   override def receive: Receive = state(0)
 
   def state(i: Int): Receive = {
-    case hallo: Hallo => {
-      log.info("HalloActor {}, message {}, i {}", name, hallo, i)
+    case hallo: Hallo =>
+      log.info("Name: {}, Message: {}, State: {}", name, hallo, i)
       context.become(state(i + 1))
-    }
   }
 }
 
