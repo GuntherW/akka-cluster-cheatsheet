@@ -29,7 +29,7 @@ libraryDependencies ++= Seq (
   "com.typesafe.akka" %% "akka-distributed-data" % akkaVersion,
   "com.twitter" %% "chill-akka" % "0.9.3",
 
-  "org.json4s" % "json4s-jackson_2.12" % "3.6.0",
+  "org.json4s" % "json4s-jackson_2.12" % "3.6.1",
   "com.typesafe" % "config" % "1.3.3"
 )
 
