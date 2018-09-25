@@ -92,6 +92,5 @@ object Main extends App {
         println(x.elements)
       case sonst => println(sonst)
     }
-
   }
 }
