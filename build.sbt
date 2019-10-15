@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-persistence"      % akkaVersion,
   "com.twitter"       %% "chill-akka"            % "0.9.3",
   "org.json4s"        %% "json4s-jackson"        % "3.6.7",
-  "com.typesafe"      % "config"                 % "1.3.4",
+  "com.typesafe"      % "config"                 % "1.4.0",
   "com.typesafe.akka" %% "akka-testkit"          % akkaVersion % "test"
 )
 

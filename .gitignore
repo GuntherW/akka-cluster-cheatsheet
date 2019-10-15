@@ -31,5 +31,6 @@ project/plugins/project/
 .worksheet
 /bin/
 
-
-
+.metals
+.bloop
+projekt/.bloop
